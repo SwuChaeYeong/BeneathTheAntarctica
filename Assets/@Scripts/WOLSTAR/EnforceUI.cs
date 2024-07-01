@@ -40,10 +40,10 @@ public class EnforceUI : MonoBehaviour
 
         //юс╫ц
         StrText.text = $"111";
-        StrPlusText.text = $"11";
+        StrPlusText.text = $"+11";
         DexText.text = $"222";
-        DexPlusText.text = $"22";
+        DexPlusText.text = $"+22";
         LukText.text = $"333";
-        LukPlusText.text = $"33";
+        LukPlusText.text = $"+33";
     }
 }
