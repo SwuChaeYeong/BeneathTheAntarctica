@@ -16,15 +16,19 @@ public class InventoryManager : Manager<InventoryManager>
     private Image inventoryUIBlackImage;
     [SerializeField] private GameObject inventoryUI;
     [SerializeField] private GameObject[] inventoryItemList;
-    
+
     public List<OreParts> orePartsList = new List<OreParts>();
-    
+
     // 아이템 데이터가 나오기 전까지 임시로 사용
     private int stone;
+    public int Stone=>stone;
 
     private bool isInventory;
+
+    private int gold;
+    public int Gold => gold;
     public bool IsInventory { get { return isInventory; } set { isInventory = value; } }
-    
+
 
     private void Start()
     {
@@ -37,7 +41,7 @@ public class InventoryManager : Manager<InventoryManager>
     {
         // 아이템 획득 로그 띄우기
         UIManager.Instance.ShowItemLog(1, quantity);
-        
+
         // 아이템 데이터 저장
         OreParts existingPart = orePartsList.Find(part => part.name == partname);
         if (existingPart != null)
@@ -52,12 +56,12 @@ public class InventoryManager : Manager<InventoryManager>
     {
         // 각 아이템들이 몇개 있는지 데이터 가져오기.
         int index = 0;
-        
+
         foreach (var oreParts in orePartsList)
         {
             if (oreParts == null)
                 return;
-            
+
             int quantity = oreParts.quantity;
             inventoryItemList[index].GetComponent<TextMeshProUGUI>().text = "x" + quantity;
             index++;
@@ -66,11 +70,11 @@ public class InventoryManager : Manager<InventoryManager>
         // 뒷 검은 배경
         inventoryUIBlackImage.gameObject.SetActive(true);
         inventoryUIBlackImage.DOFade(0.7f, 0.25f);
-        
+
         inventoryUI.transform.localScale = Vector3.zero;
         inventoryUI.gameObject.SetActive(true);
         inventoryUI.transform.DOScale(1, 0.25f);
-        
+
         IsInventory = false;
     }
 
@@ -78,10 +82,10 @@ public class InventoryManager : Manager<InventoryManager>
     {
         inventoryUIBlackImage.DOFade(0, 0.25f);
         inventoryUIBlackImage.gameObject.SetActive(false);
-        
+
         inventoryUI.gameObject.SetActive(false);
         IsInventory = true;
     }
-    
-    
+
+
 }

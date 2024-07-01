@@ -16,7 +16,7 @@ public class UIManager : Manager<UIManager>
 
     [Header("Portal Panel")]
     [SerializeField] private GameObject minePortalPanel;
-    
+
     [Header("ItemLog")]
     [SerializeField] private Transform logPoolTr;
     [SerializeField] private Transform logParent;
@@ -37,7 +37,7 @@ public class UIManager : Manager<UIManager>
     private int btnID = 0;
 
     [Header("Enforce")]
-    [SerializeField] private GameObject enfroceUI;
+    [SerializeField] private EnforceUI enfroceUI;
 
     [Header("Calculate")]
     [SerializeField] private GameObject calculateUI;
@@ -64,7 +64,7 @@ public class UIManager : Manager<UIManager>
         //    }
         //}
 
-        if((Input.GetKeyUp(KeyCode.F) || Input.GetKeyUp(KeyCode.Space)) && dialogPanel.activeSelf)
+        if ((Input.GetKeyUp(KeyCode.F) || Input.GetKeyUp(KeyCode.Space)) && dialogPanel.activeSelf)
         {
             Dialog(btnID);
         }
@@ -76,7 +76,7 @@ public class UIManager : Manager<UIManager>
         //PlayerController.Instance.OnMagazineCountChanged += UpdateMagazineCountUI;
         CreateLogPool();
     }
-    
+
     private void UpdateMagazineCountUI(int magazineCount)
     {
         magazineNumText.text = "Magazine Count: " + magazineCount;
@@ -88,9 +88,9 @@ public class UIManager : Manager<UIManager>
     {
         // 광산 선택 패널 오픈
         minePortalPanel.gameObject.SetActive(true);
-        
+
         // 플레이어 조작 멈춤
-        
+
     }
 
     public void CloseMineSelectPanel()
@@ -177,14 +177,14 @@ public class UIManager : Manager<UIManager>
     //다이얼로그 출력
     private void Dialog(int btn = 0)
     {
-        string dialogData = dialogUI.GetDialog(dialigIndex ,npcID, btn);
+        string dialogData = dialogUI.GetDialog(dialigIndex, npcID, btn);
         string nameData = dialogUI.GetDialogName(npcID);
         string[] btnData = dialogUI.GetBtnText(npcID);
         Sprite spriteData = dialogUI.GetNpcImage(npcID);
 
         if (dialogData == null)
         {
-            if((Input.GetKeyUp(KeyCode.F) || Input.GetKeyUp(KeyCode.Space)) && btnID == 2)
+            if ((Input.GetKeyUp(KeyCode.F) || Input.GetKeyUp(KeyCode.Space)) && btnID == 2)
             {
                 dialogPanel.SetActive(false);
             }
@@ -206,9 +206,12 @@ public class UIManager : Manager<UIManager>
     {
         dialogPanel.SetActive(false);
 
-        if (npcID==BLACK_SMITH)
-            enfroceUI.SetActive(true);
-        else 
+        if (npcID == BLACK_SMITH)
+        {
+            enfroceUI.gameObject.SetActive(true);
+            enfroceUI.Init();
+        }
+        else
             calculateUI.SetActive(true);
 
         btnID = 0;
@@ -225,7 +228,10 @@ public class UIManager : Manager<UIManager>
         dialogPanel.SetActive(false);
 
         if (npcID == BLACK_SMITH)
-            enfroceUI.SetActive(true);
+        {
+            enfroceUI.gameObject.SetActive(true);
+            enfroceUI.Init();
+        }
         else
             storeUI.SetActive(true);
 
@@ -251,12 +257,12 @@ public class UIManager : Manager<UIManager>
         dialigIndex = 0;
         btnID = 2;
         Dialog(btnID);
-        
+
     }
 
     public void CloseEnforce()
     {
-        enfroceUI.SetActive(false);
+        enfroceUI.gameObject.SetActive(false);
         calculateUI.SetActive(false);
         storeUI.SetActive(false);
 
