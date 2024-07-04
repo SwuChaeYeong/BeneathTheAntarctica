@@ -2,11 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : Manager<PlayerController>
 {
     [Header("Player")] 
     private Animator playerAnim;  // 플레이어 이동관련 애니메이션
+    [SerializeField] private Slider playerHP;
 
     Vector2 _moveDir = Vector2.zero;
     private float playerSpeed = 4.0f;
@@ -113,5 +115,11 @@ public class PlayerController : Manager<PlayerController>
     {
         Vector3 dir= _moveDir * playerSpeed * Time.deltaTime;
         transform.position += dir;
+    }
+
+    public void Damaged(int now, int max)
+    {
+        playerHP.maxValue = max;
+        playerHP.value = now;
     }
 }

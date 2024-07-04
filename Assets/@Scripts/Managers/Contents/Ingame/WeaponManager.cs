@@ -34,9 +34,4 @@ public class WeaponManager : Manager<WeaponManager>
                 break;
         }
     }
-
-    public void OnUpgrade()
-    {
-
-    }
 }
