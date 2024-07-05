@@ -21,8 +21,12 @@ public class InventoryManager : Manager<InventoryManager>
     
     // 아이템 데이터가 나오기 전까지 임시로 사용
     private int stone;
+    public int Stone => stone;
 
     private bool isInventory;
+
+    private int gold;
+    public int Gold => gold;
     public bool IsInventory { get { return isInventory; } set { isInventory = value; } }
     
 

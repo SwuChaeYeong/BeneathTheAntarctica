@@ -38,7 +38,7 @@ public class UIManager : Manager<UIManager>
     private int btnID = 0;
 
     [Header("Enforce")]
-    [SerializeField] private GameObject enfroceUI;
+    [SerializeField] private EnforceUI enfroceUI;
 
     [Header("Calculate")]
     [SerializeField] private GameObject calculateUI;
@@ -186,7 +186,7 @@ public class UIManager : Manager<UIManager>
 
         if (dialogData == null)
         {
-            if((Input.GetKeyUp(KeyCode.F) || Input.GetKeyUp(KeyCode.Space)) && btnID == 2)
+            if ((Input.GetKeyUp(KeyCode.F) || Input.GetKeyUp(KeyCode.Space)) && btnID == 2)
             {
                 dialogPanel.SetActive(false);
             }
@@ -208,9 +208,12 @@ public class UIManager : Manager<UIManager>
     {
         dialogPanel.SetActive(false);
 
-        if (npcID==BLACK_SMITH)
-            enfroceUI.SetActive(true);
-        else 
+        if (npcID == BLACK_SMITH)
+        {
+            enfroceUI.gameObject.SetActive(true);
+            enfroceUI.Init();
+        }
+        else
             calculateUI.SetActive(true);
 
         btnID = 0;
@@ -227,7 +230,10 @@ public class UIManager : Manager<UIManager>
         dialogPanel.SetActive(false);
 
         if (npcID == BLACK_SMITH)
-            enfroceUI.SetActive(true);
+        {
+            enfroceUI.gameObject.SetActive(true);
+            enfroceUI.Init();
+        }
         else
             storeUI.SetActive(true);
 
@@ -258,7 +264,7 @@ public class UIManager : Manager<UIManager>
 
     public void CloseEnforce()
     {
-        enfroceUI.SetActive(false);
+        enfroceUI.gameObject.SetActive(false);
         calculateUI.SetActive(false);
         storeUI.SetActive(false);
 
