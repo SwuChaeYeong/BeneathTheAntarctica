@@ -4332,8 +4332,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -6014,7 +6014,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0/50
+  m_text: 0/416
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 51f711c1aca96764281eb91212a5cf39, type: 2}
   m_sharedMaterial: {fileID: 1552251262756573783, guid: 51f711c1aca96764281eb91212a5cf39, type: 2}
@@ -26032,7 +26032,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 2
+  m_text: 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 51f711c1aca96764281eb91212a5cf39, type: 2}
   m_sharedMaterial: {fileID: 1552251262756573783, guid: 51f711c1aca96764281eb91212a5cf39, type: 2}
@@ -30995,7 +30995,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ec53843f0b01d945999c0e5f2925dfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHP: {fileID: 0}
+  playerHP: {fileID: 1269456920}
 --- !u!95 &884067777
 Animator:
   serializedVersion: 5
@@ -60694,6 +60694,8 @@ MonoBehaviour:
   expSlider: {fileID: 1637232185}
   expText: {fileID: 210226253}
   level: {fileID: 766710693}
+  hpSlider: {fileID: 1269456920}
+  hpText: {fileID: 1531653447}
   minePortalPanel: {fileID: 1971477024}
   logPoolTr: {fileID: 1411781585}
   logParent: {fileID: 1612108045}

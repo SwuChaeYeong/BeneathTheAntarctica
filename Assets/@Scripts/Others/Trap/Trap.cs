@@ -9,7 +9,7 @@ public class Trap : MonoBehaviour
     {
         if (trapName == "WaterBomb")
         {
-            //최대 체력 20%
+                        PlayerController.Instance.Damaged((int)(LevelManager.Instance.GetCurrentHp() * 0.2));
         }
         else if (trapName == "Gas")
         {

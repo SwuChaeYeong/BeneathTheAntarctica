@@ -14,6 +14,8 @@ public class UIManager : Manager<UIManager>
     [SerializeField] private Slider expSlider;
     [SerializeField] private TextMeshProUGUI expText;
     [SerializeField] private TextMeshProUGUI level;
+    [SerializeField] private Slider hpSlider;
+    [SerializeField] private TextMeshProUGUI hpText;
 
     [Header("Portal Panel")]
     [SerializeField] private GameObject minePortalPanel;
@@ -115,6 +117,18 @@ public class UIManager : Manager<UIManager>
         expSlider.value = currentExp;
     }
 
+    #endregion
+
+    #region HpUI
+    public void UpdateLevelHpText(int levelHp)
+    {
+        hpText.text = levelHp + " / " + levelHp;
+    }
+    public void UpdateLevelHpBar(int levelHp)
+    {
+        hpSlider.maxValue = levelHp;
+        hpSlider.value = levelHp;
+    }
     #endregion
 
     #region ItemLogUI

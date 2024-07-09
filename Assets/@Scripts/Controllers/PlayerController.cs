@@ -117,9 +117,9 @@ public class PlayerController : Manager<PlayerController>
         transform.position += dir;
     }
 
-    public void Damaged(int now, int max)
+    public void Damaged(int now)
     {
-        playerHP.maxValue = max;
-        playerHP.value = now;
+        playerHP.maxValue = LevelManager.Instance.GetCurrentHp();
+        playerHP.value -= now;
     }
 }

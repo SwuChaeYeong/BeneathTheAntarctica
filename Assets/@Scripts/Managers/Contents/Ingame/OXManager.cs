@@ -17,6 +17,11 @@ public class OXManager : Manager<OXManager>
         StartCoroutine(decreaseOX());
     }
 
+    private void Update()
+    {
+        oxText.text = oxSlider.value.ToString() + "%";
+    }
+
     IEnumerator decreaseOX()
     {
         while (true)
@@ -27,8 +32,6 @@ public class OXManager : Manager<OXManager>
 
             oxSlider.maxValue = maxOX;
             oxSlider.value = curruntOX;
-
-            oxText.text = curruntOX + "%";
         }
     }
 
