@@ -50,6 +50,7 @@ public class Enemy : MonoBehaviour
         if(distance >= 0.75f && isAtk)
         {
             isAtk = false;
+            monsterAnim.SetBool("isAttack", isAtk);
             SetState(EnemyState.WALK);
             StopCoroutine(Attack());
         }
@@ -95,6 +96,7 @@ public class Enemy : MonoBehaviour
             if(distance < 0.75f )
             {
                 isAtk = true;
+                monsterAnim.SetBool("isAttack", isAtk);
                 SetState(EnemyState.ATTACK);
                 break;
             }
@@ -110,8 +112,14 @@ public class Enemy : MonoBehaviour
             {
                 break;
             }
+            AttackAction();
             yield return new WaitForSeconds(1f);
         }
+    }
+
+    void AttackAction()
+    {
+        PlayerController.Instance.Damaged(atk);
     }
 
     public void Damaged(int damage)
