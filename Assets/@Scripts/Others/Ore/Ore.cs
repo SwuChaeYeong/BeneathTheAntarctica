@@ -14,7 +14,6 @@ public class Ore : MonoBehaviour
     [Header("Basic_Info")]
     public int parts; // 전리품 번호
     public string name;
-    public Sprite img;
     public float hp = 50f;
     public float maxHp = 50f;
     public float displayTime = 5f; // HP 슬라이더를 보여줄 시간
@@ -88,10 +87,10 @@ public class Ore : MonoBehaviour
         if (hp <= 0)
         {
             hp = 0;
-            LevelManager.Instance.AddExp(5);
-            InventoryManager.Instance.AddPart(name, Random.Range(1, 3), img);
+            LevelManager.Instance.AddExp(8);
+            InventoryManager.Instance.AddPart(name, Random.Range(1, 3));
             FadeOutAndDisable();
-            //StartCoroutine(RespawnAfterDelay(respawnTime));
+            StartCoroutine(RespawnAfterDelay(respawnTime));
             return;
         }
         

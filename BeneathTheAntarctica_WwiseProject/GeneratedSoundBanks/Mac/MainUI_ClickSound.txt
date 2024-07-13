@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	683271616	PlayMainUI_ClickSound			\Default Work Unit\PlayMainUI_ClickSound	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	1031003027	MainUI_ClickSound	F:\Unity\BeneathTheAntarctica\BeneathTheAntarctica_WwiseProject\.cache\Mac\SFX\Main_Click_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\MainUI_ClickSound		6696
+

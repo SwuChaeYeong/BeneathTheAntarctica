@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{E35911B3-6E46-4380-AFC0-FBB93008C79D}" SchemaVersion="119">
+	<SoundBanks>
+		<WorkUnit Name="Default Work Unit" ID="{E35911B3-6E46-4380-AFC0-FBB93008C79D}" PersistMode="Standalone">
+			<ChildrenList>
+				<Folder Name="MainUI" ID="{224B97F9-59EA-423D-9F80-AEC42DF573B0}" ShortID="169396550">
+					<ChildrenList>
+						<SoundBank Name="MainUI_ClickSound" ID="{309ED6D3-42A1-4FA8-A011-8DCE17F38310}">
+							<ObjectInclusionList>
+								<ObjectRef Name="PlayMainUI_ClickSound" ID="{A5C1E576-B583-4319-AD83-AB0A03CE939C}" WorkUnitID="{08552033-FFCF-40B3-891F-D24C8EDBF16F}" Origin="Manual" Filter="7"/>
+							</ObjectInclusionList>
+							<ObjectExclusionList/>
+							<GameSyncExclusionList/>
+						</SoundBank>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Character" ID="{B7CC54DE-FC82-4DF2-BE7B-E2DAADB35B07}" ShortID="856724805">
+					<ChildrenList>
+						<Folder Name="Motion" ID="{F04C7A6B-48C2-4CBF-993C-0B337733536F}" ShortID="61033557">
+							<ChildrenList>
+								<SoundBank Name="AirChargeSound" ID="{B9E6F4D3-47EC-4F1F-84B5-91360E684F4F}">
+									<ObjectInclusionList/>
+									<ObjectExclusionList/>
+									<GameSyncExclusionList/>
+								</SoundBank>
+							</ChildrenList>
+						</Folder>
+					</ChildrenList>
+				</Folder>
+			</ChildrenList>
+		</WorkUnit>
+	</SoundBanks>
+</WwiseDocument>

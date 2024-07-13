@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{9E447025-9CC7-469C-8F01-5908322BAE15}" SchemaVersion="119" RootDocumentID="{08552033-FFCF-40B3-891F-D24C8EDBF16F}" ParentDocumentID="{08552033-FFCF-40B3-891F-D24C8EDBF16F}">
+	<Events>
+		<WorkUnit Name="Bat" ID="{9E447025-9CC7-469C-8F01-5908322BAE15}" OwnerID="{281374A3-9AF8-4C2A-A665-0F6A69709252}" PersistMode="Nested">
+			<ChildrenList>
+				<Event Name="PlayBat_IdleSound" ID="{5B64E158-78F4-4DF8-98F0-12F7414C95F6}"/>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

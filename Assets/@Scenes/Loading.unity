@@ -575,7 +575,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1149947549}
   - component: {fileID: 1149947550}
-  - component: {fileID: 1149947551}
   m_Layer: 0
   m_Name: DataManager
   m_TagString: Untagged
@@ -613,19 +612,6 @@ MonoBehaviour:
   progressText: {fileID: 511273328}
   GET_PLAYER_DATA: 
   COMPLETE: 
---- !u!114 &1149947551
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1149947548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35da581b82513fd43a19c35a44f0c010, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ScriptableUpgradeData: {fileID: 11400000, guid: ef535f661f57f684dbf7e1670255d9bf, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

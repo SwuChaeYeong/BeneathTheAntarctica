@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ProjectInfo>
+	<Project Name="BeneathTheAntarctica_WwiseProject" GUID="{06FB21F0-2A7B-435C-A60D-5BE17656A092}" Generator="2023.1.4.8496"/>
+	<CacheRoot>../../../../BeneathTheAntarctica_WwiseProject/.cache</CacheRoot>
+	<Platforms>
+		<Platform Name="Mac" GUID="{4EF62D97-2DA5-46B3-8AB8-2D1F796D31B3}" BasePlatform="Mac" BasePlatformGUID="{9C6217D5-DD11-4795-87C1-6CE02853C540}" Path="../../../../BeneathTheAntarctica_WwiseProject/GeneratedSoundBanks/Mac"/>
+		<Platform Name="Windows" GUID="{C335E728-44D7-4B56-8D0F-B69B1F79A5F4}" BasePlatform="Windows" BasePlatformGUID="{6E0CB257-C6C8-4C5C-8366-2740DFC441EB}" Path="../../../../BeneathTheAntarctica_WwiseProject/GeneratedSoundBanks/Windows"/>
+	</Platforms>
+	<Languages>
+		<Language Name="English(US)" Id="684519430" GUID="{BFDA9842-9B7D-4E77-8BDA-089B281D636B}" Default="true" UseAsStandIn="true"/>
+	</Languages>
+	<FileHash>{F8BB5BC2-FEBB-2456-51C0-8E1559376D36}</FileHash>
+</ProjectInfo>

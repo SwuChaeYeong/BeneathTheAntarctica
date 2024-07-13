@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{08552033-FFCF-40B3-891F-D24C8EDBF16F}" SchemaVersion="119">
+	<Events>
+		<WorkUnit Name="Default Work Unit" ID="{08552033-FFCF-40B3-891F-D24C8EDBF16F}" PersistMode="Standalone">
+			<ChildrenList>
+				<Folder Name="UI Sound" ID="{3CF13EC2-CD0B-4651-AC48-3CF82F0CFE8F}" ShortID="6564313">
+					<ChildrenList>
+						<Event Name="PlayMainUI_ClickSound" ID="{A5C1E576-B583-4319-AD83-AB0A03CE939C}">
+							<ChildrenList>
+								<Action Name="" ID="{653182C1-37D9-4ADC-AB4E-8C07AE635C81}" ShortID="601556130">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="MainUI_ClickSound" ID="{D70919C5-FA32-4C21-9D10-4309DE052E77}" WorkUnitID="{ACECC097-A504-4673-9CAB-7122BFCF8108}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Character" ID="{8F4EBA7C-FB67-45A3-BE4E-D55BA5012A39}" ShortID="1041373972">
+					<ChildrenList>
+						<Folder Name="Motion" ID="{A6B4C59C-E26E-4CBA-B10D-4BF5C5B6F4B3}" ShortID="759910480">
+							<ChildrenList>
+								<Event Name="Play_AirCharge" ID="{93BD8BB6-A02B-431C-91FA-142335C7F7B0}">
+									<ChildrenList>
+										<Action Name="" ID="{A726CC8B-CE4C-41E9-B219-AEF51CC8E0E1}" ShortID="211844758">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="GasChargeSound" ID="{7728E9DC-3275-4167-8FD5-22DED1B0F0B7}" WorkUnitID="{ACECC097-A504-4673-9CAB-7122BFCF8108}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{59F6FC13-3841-4263-B49D-15D0C3C52CE5}" ShortID="160419877">
+											<PropertyList>
+												<Property Name="Delay" Type="Real64" Value="2.9"/>
+												<Property Name="FadeTime" Type="Real64" Value="0.7"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="ValveSound" ID="{A1F7ACAF-B426-4B4B-9270-A874024BA77E}" WorkUnitID="{ACECC097-A504-4673-9CAB-7122BFCF8108}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Enemy" ID="{439225A7-3887-43B2-B40A-5437D06711FD}" ShortID="568900544">
+					<ChildrenList>
+						<Folder Name="LV1" ID="{249630CC-7B5D-4005-8E84-72B06CCC39EC}" ShortID="462862869"/>
+						<Folder Name="LV2" ID="{281374A3-9AF8-4C2A-A665-0F6A69709252}" ShortID="448797652">
+							<ChildrenList>
+								<WorkUnit Name="Bat" ID="{9E447025-9CC7-469C-8F01-5908322BAE15}" PersistMode="Reference"/>
+							</ChildrenList>
+						</Folder>
+						<Folder Name="LV3" ID="{F067FEDB-3763-4265-933B-AFBBDD3BBCA7}" ShortID="1034071334"/>
+					</ChildrenList>
+				</Folder>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>
