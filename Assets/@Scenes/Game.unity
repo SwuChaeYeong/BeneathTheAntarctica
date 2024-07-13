@@ -5570,7 +5570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 309c212209d8d17439cefb349ccad2fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterAnim: {fileID: 0}
+  monsterAnim: {fileID: 201243134}
 --- !u!61 &201243132
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -30996,6 +30996,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHP: {fileID: 1269456920}
+<<<<<<< HEAD
+=======
+  playerHPText: {fileID: 1531653447}
+  MaxHp: 0
+  Hp: 0
+>>>>>>> main
 --- !u!95 &884067777
 Animator:
   serializedVersion: 5
