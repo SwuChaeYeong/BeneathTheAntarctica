@@ -13,6 +13,7 @@ public class UIManager : Manager<UIManager>
     [Header("Level")]
     [SerializeField] private Slider expSlider;
     [SerializeField] private TextMeshProUGUI expText;
+    [SerializeField] private TextMeshProUGUI level;
 
     [Header("Portal Panel")]
     [SerializeField] private GameObject minePortalPanel;
@@ -37,7 +38,7 @@ public class UIManager : Manager<UIManager>
     private int btnID = 0;
 
     [Header("Enforce")]
-    [SerializeField] private GameObject enfroceUI;
+    [SerializeField] private EnforceUI enfroceUI;
 
     [Header("Calculate")]
     [SerializeField] private GameObject calculateUI;
@@ -52,19 +53,19 @@ public class UIManager : Manager<UIManager>
 
     private void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.Escape))
-        //{
-        //    if (InventoryManager.Instance.IsInventory)
-        //    {
-        //        InventoryManager.Instance.OpenInventory();
-        //    }
-        //    else
-        //    {
-        //        InventoryManager.Instance.CloseInventory();
-        //    }
-        //}
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (InventoryManager.Instance.IsInventory)
+            {
+                InventoryManager.Instance.OpenInventory();
+            }
+            else
+            {
+                InventoryManager.Instance.CloseInventory();
+            }
+        }
 
-        if((Input.GetKeyUp(KeyCode.F) || Input.GetKeyUp(KeyCode.Space)) && dialogPanel.activeSelf)
+        if ((Input.GetKeyUp(KeyCode.F) || Input.GetKeyUp(KeyCode.Space)) && dialogPanel.activeSelf)
         {
             Dialog(btnID);
         }
@@ -104,7 +105,8 @@ public class UIManager : Manager<UIManager>
 
     public void UpdateLevelText(int level, int currentExp, int requiredExp)
     {
-        expText.text = "Lv." + level + " ( " + currentExp + " / " + requiredExp + " ) ";
+        expText.text = currentExp + " / " + requiredExp;
+        this.level.text = level.ToString();
     }
 
     public void UpdateExpBar(int currentExp, int requiredExp)
@@ -184,7 +186,7 @@ public class UIManager : Manager<UIManager>
 
         if (dialogData == null)
         {
-            if((Input.GetKeyUp(KeyCode.F) || Input.GetKeyUp(KeyCode.Space)) && btnID == 2)
+            if ((Input.GetKeyUp(KeyCode.F) || Input.GetKeyUp(KeyCode.Space)) && btnID == 2)
             {
                 dialogPanel.SetActive(false);
             }
@@ -206,9 +208,12 @@ public class UIManager : Manager<UIManager>
     {
         dialogPanel.SetActive(false);
 
-        if (npcID==BLACK_SMITH)
-            enfroceUI.SetActive(true);
-        else 
+        if (npcID == BLACK_SMITH)
+        {
+            enfroceUI.gameObject.SetActive(true);
+            enfroceUI.Init();
+        }
+        else
             calculateUI.SetActive(true);
 
         btnID = 0;
@@ -225,7 +230,10 @@ public class UIManager : Manager<UIManager>
         dialogPanel.SetActive(false);
 
         if (npcID == BLACK_SMITH)
-            enfroceUI.SetActive(true);
+        {
+            enfroceUI.gameObject.SetActive(true);
+            enfroceUI.Init();
+        }
         else
             storeUI.SetActive(true);
 
@@ -256,7 +264,7 @@ public class UIManager : Manager<UIManager>
 
     public void CloseEnforce()
     {
-        enfroceUI.SetActive(false);
+        enfroceUI.gameObject.SetActive(false);
         calculateUI.SetActive(false);
         storeUI.SetActive(false);
 

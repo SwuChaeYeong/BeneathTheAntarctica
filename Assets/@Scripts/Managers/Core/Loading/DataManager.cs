@@ -33,6 +33,8 @@ public class DataManager : Singleton<DataManager>
         playerDataVo = new CharacterDataVO[3];
         
         LoadUserData();
+
+        gameObject.GetComponent<GameData>().Init();
     }
     
     public TextMeshProUGUI progressText;

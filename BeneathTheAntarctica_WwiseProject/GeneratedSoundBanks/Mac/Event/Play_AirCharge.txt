@@ -1,3 +1,0 @@
-Event	ID	Name			Wwise Object Path	Notes
-	1596135766	Play_AirCharge			\Default Work Unit\Character\Motion\Play_AirCharge	
-
