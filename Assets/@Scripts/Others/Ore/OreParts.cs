@@ -6,12 +6,10 @@ public class OreParts
 {
     public string name;
     public int quantity;
-    public Sprite img;
 
-    public OreParts(string name, int quantity, Sprite img)
+    public OreParts(string name, int quantity)
     {
         this.name = name;
         this.quantity = quantity;
-        this.img = img;
     }
 }

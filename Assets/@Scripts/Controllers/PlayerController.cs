@@ -1,20 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerController : Manager<PlayerController>
 {
     [Header("Player")] 
     private Animator playerAnim;  // 플레이어 이동관련 애니메이션
-    [SerializeField] private Slider playerHP;
-    [SerializeField] private TMP_Text playerHPText;
-
-
-    public int MaxHp;
-    public int Hp;
 
     Vector2 _moveDir = Vector2.zero;
     private float playerSpeed = 4.0f;
@@ -23,20 +15,14 @@ public class PlayerController : Manager<PlayerController>
     private bool isMoving;
     
     private Camera m_camera;
+    [SerializeField] FootstepPlayer footstepPlayer;
     
     public void Init()
     {
         m_camera = Camera.main;
         screenWidthHalf = Screen.width / 2;
         playerAnim = GetComponent<Animator>();
-
-        MaxHp = 100;
-
-        Hp = MaxHp;
-
-        playerHP.value = Hp / (float)MaxHp;
-
-        playerHPText.text = $"{Hp}/{MaxHp}";
+        
         //PlayerController에서 Init이 모두 끝나면 하위개념인
         //WeaponManager Init 실행
         //WeaponManager.Instance.Init();
@@ -129,18 +115,14 @@ public class PlayerController : Manager<PlayerController>
         Vector3 dir= _moveDir * playerSpeed * Time.deltaTime;
         transform.position += dir;
     }
+    
+    //여기는 사운드
+    public void PlayFootstep()
+    {footstepPlayer.PlayFootstepSound();
 
-    //public void Damaged(int now, int max)
-    //{
-    //    playerHP.maxValue = max;
-    //    playerHP.value = now;
-    //}
-    public void Damaged(int damage)
-    {
-        Hp-=damage;
 
-        playerHP.value = Hp / (float)MaxHp;
 
-        playerHPText.text = $"{Hp}/{MaxHp}";
     }
+
+
 }

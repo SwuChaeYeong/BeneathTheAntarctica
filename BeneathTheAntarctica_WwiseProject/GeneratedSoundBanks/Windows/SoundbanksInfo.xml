@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="150">
+	<RootPaths>
+		<ProjectRoot>../..</ProjectRoot>
+		<SourceFilesRoot>../../.cache/Windows</SourceFilesRoot>
+		<SoundBanksRoot>.</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>.</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<SoundBanks>
+		<SoundBank Id="692614514" Type="User" Language="SFX" Hash="{AAA33823-5BFB-C8CE-10B7-0502C5AFEB51}">
+			<ShortName>MainUI_ClickSound</ShortName>
+			<Path>MainUI_ClickSound.bnk</Path>
+			<Media>
+				<File Id="1031003027" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Main_Click.wav</ShortName>
+					<CachePath>SFX/Main_Click_818F3B66.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="683271616" Name="PlayMainUI_ClickSound" DurationType="OneShot" DurationMin="0.07482993" DurationMax="0.07482993">
+					<MediaRefs>
+						<MediaRef Id="1031003027"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="1200087662" Type="Event" Language="SFX" Hash="{93385928-1A72-B08D-3C2B-7322E2447C8E}">
+			<ShortName>PlayBat_IdleSound</ShortName>
+			<Path>Event/PlayBat_IdleSound.bnk</Path>
+			<Events>
+				<Event Id="1200087662" Name="PlayBat_IdleSound" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+			</Events>
+		</SoundBank>
+		<SoundBank Id="1224477156" Type="User" Language="SFX" Hash="{63051B69-1870-16D0-229A-224E639641F6}">
+			<ShortName>AirChargeSound</ShortName>
+			<Path>AirChargeSound.bnk</Path>
+		</SoundBank>
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{3B311BE4-3230-ED11-14A4-5BC70F61A672}">
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+			<Plugins>
+				<AudioDevices>
+					<Plugin Id="2317455096" Name="No_Output" LibName="No Output" LibId="11862023"/>
+					<Plugin Id="3859886410" Name="System" LibName="System" LibId="11403271"/>
+				</AudioDevices>
+			</Plugins>
+			<Busses>
+				<Bus Id="1502772432" Name="SFx Bus"/>
+				<Bus Id="1551306167" Name="UI"/>
+				<Bus Id="3803692087" Name="Master Audio Bus"/>
+			</Busses>
+		</SoundBank>
+		<SoundBank Id="1596135766" Type="Event" Language="SFX" Hash="{A1EC68C5-C0A4-22AF-B1E0-8ACF742A6C06}">
+			<ShortName>Play_AirCharge</ShortName>
+			<Path>Event/Play_AirCharge.bnk</Path>
+			<Media>
+				<File Id="513450492" Language="SFX" Streaming="false" Location="Loose">
+					<ShortName>AirCharge.wav</ShortName>
+					<Path>Media/513450492.wem</Path>
+					<CachePath>SFX/AirCharge_84A09DE7.wem</CachePath>
+				</File>
+				<File Id="876124235" Language="SFX" Streaming="false" Location="Loose">
+					<ShortName>ValveTurnoff.wav</ShortName>
+					<Path>Media/876124235.wem</Path>
+					<CachePath>SFX/ValveTurnoff_4B79E381.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="1596135766" Name="Play_AirCharge" DurationType="OneShot" DurationMin="4.6607537" DurationMax="4.6607537">
+					<MediaRefs>
+						<MediaRef Id="513450492"/>
+						<MediaRef Id="876124235"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
+	</SoundBanks>
+	<FileHash>{991D9E3B-75A8-7BB3-6196-792230FEFEB8}</FileHash>
+</SoundBanksInfo>
