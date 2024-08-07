@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +10,17 @@ public class Trap : MonoBehaviour
     {
         if (trapName == "WaterBomb")
         {
-            //최대 체력 20%
+            
+            PlayerController.Instance.isHit = true;   
+
+            Debug.Log(PlayerController.Instance.isHit);
+            Debug.Log(PlayerController.Instance.isInvincible);
+
+            if (PlayerController.Instance.isHit && !PlayerController.Instance.isInvincible)
+            {
+                //최대 체력 20% + *무적 시간 필요함
+                PlayerController.Instance.Damaged((int)(LevelManager.Instance.GetMaxHp() * 0.2f));
+            }
         }
         else if (trapName == "Gas")
         {

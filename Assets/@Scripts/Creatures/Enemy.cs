@@ -33,6 +33,8 @@ public class Enemy : MonoBehaviour
     {
         SetState(EnemyState.WALK);
         _spriteRenderer = GetComponent<SpriteRenderer>();
+
+        playerPos = GameObject.Find("Player").transform;
     }
 
     public void Init(int hp, int atk, float spd)

@@ -16,6 +16,7 @@ public class InventoryManager : Manager<InventoryManager>
     private Image inventoryUIBlackImage;
     [SerializeField] private GameObject inventoryUI;
     [SerializeField] private GameObject[] inventoryItemList;
+    [SerializeField] private GameObject[] calItemList;
 
     public List<OreParts> orePartsList = new List<OreParts>();
     
@@ -54,24 +55,7 @@ public class InventoryManager : Manager<InventoryManager>
 
     public void OpenInventory()
     {
-        // 각 아이템들이 몇개 있는지 데이터 가져오기.
-        int index = 0;
-        
-        foreach (var oreParts in orePartsList)
-        {
-            if (oreParts == null)
-                return;
-            
-            //아이템 개수
-            int quantity = oreParts.quantity;
-            inventoryItemList[index].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "x" + quantity;
-
-            //아이템 이미지
-            Sprite itemImg = oreParts.img;
-            inventoryItemList[index].transform.GetChild(0).GetComponent<Image>().sprite = itemImg;
-
-            index++;
-        }
+        ItemCount(inventoryItemList);
 
         // 뒷 검은 배경
         inventoryUIBlackImage.gameObject.SetActive(true);
@@ -82,6 +66,31 @@ public class InventoryManager : Manager<InventoryManager>
         inventoryUI.transform.DOScale(1, 0.25f);
         
         IsInventory = false;
+    }
+
+    public void ItemCount(GameObject[] obj)
+    {
+        // 각 아이템들이 몇개 있는지 데이터 가져오기.
+        int index = 0;
+
+        Debug.Log("AA");
+
+        foreach (var oreParts in orePartsList)
+        {
+            if (oreParts == null)
+                return;
+            Debug.Log("AAa");
+            //아이템 개수
+            int quantity = oreParts.quantity;
+            Debug.Log(quantity);
+            obj[index].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "x" + quantity;
+
+            //아이템 이미지
+            Sprite itemImg = oreParts.img;
+            obj[index].transform.GetChild(0).GetComponent<Image>().sprite = itemImg;
+
+            index++;
+        }
     }
 
     public void CloseInventory()

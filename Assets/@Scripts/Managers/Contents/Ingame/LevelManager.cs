@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class LevelManager : Manager<LevelManager>
 {
-    private int[] requiredExpPerLevel = { 0, 416, 981, 1856, 3125, 4896, 7301, 10496, 14661, 20000, 26741, 35136, 45461, 58016, 73125 }; // 각 레벨마다 필요한 경험치
+    private int[] requiredExpPerLevel = { 0, 416, 981, 1856, 3125, 4896, 7301, 10496, 14661, 20000 }; // 각 레벨마다 필요한 경험치
+    private int[] hpLevel = { 0, 100, 400, 1350, 2100, 6250, 10800, 17150, 25600, 36450, 50000 };
 
     // 현재 레벨과 경험치
     private int currentLevel = 1;
@@ -32,6 +33,7 @@ public class LevelManager : Manager<LevelManager>
         currentExp -= requiredExpPerLevel[currentLevel - 1];
         UIManager.Instance.UpdateLevelText(currentLevel, currentExp, requiredExpPerLevel[currentLevel]);
         UIManager.Instance.UpdateExpBar(currentExp, requiredExpPerLevel[currentLevel]);
+        PlayerController.Instance.SetHp(hpLevel[currentLevel]);
     }
 
     // 현재 레벨 반환
@@ -44,5 +46,9 @@ public class LevelManager : Manager<LevelManager>
     public int GetCurrentExp()
     {
         return currentExp;
+    }
+    public int GetMaxHp()
+    {
+        return hpLevel[currentLevel];
     }
 }

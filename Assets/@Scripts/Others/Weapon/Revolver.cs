@@ -110,6 +110,8 @@ public class Revolver : MonoBehaviour
     {
         if (bulletPool.Count > 0)
         {
+            GetComponent<AudioSource>().Play();
+
             GameObject bullet = bulletPool.Dequeue();
             bullet.transform.position = transform.position;
             bullet.SetActive(true);

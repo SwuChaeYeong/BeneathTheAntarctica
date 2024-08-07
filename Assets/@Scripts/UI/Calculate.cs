@@ -13,28 +13,16 @@ public class Calculate : MonoBehaviour
     [SerializeField] TMP_Text productPrice;
     [SerializeField] GameObject productList;
     [SerializeField] GameObject salePrice;
+    [SerializeField] private GameObject[] calItemList;
 
     public List<OreParts> orePartsList = new List<OreParts>();
     int maxQuantity;
     // Start is called before the first frame update
-    void Start()
+    public void StartSetting()
     {
-        // 각 아이템들이 몇개 있는지 데이터 가져오기.
-        int index = 0;
-
-        foreach (var oreParts in orePartsList)
-        {
-            if (oreParts == null)
-                return;
-
-            int quantity = oreParts.quantity;
-            Debug.Log(quantity);
-            count.text = quantity.ToString();
-            index++;
-        }
-
-        maxQuantity = int.Parse(count.text.ToString());
-        Debug.Log(maxQuantity);
+        InventoryManager.Instance.ItemCount(calItemList);
+        maxQuantity = int.Parse(count.text.ToString().Substring(1, (count.text.ToString().Length - 1)));
+        myPrice.text = MoneyManager.Instance.GetMoney().ToString();
     }
 
     // Update is called once per frame
@@ -48,7 +36,7 @@ public class Calculate : MonoBehaviour
         productList.SetActive(true);
         salePrice.SetActive(true);
         saleCount.text = "1";
-        count.text = (int.Parse(count.text.ToString()) - 1).ToString();
+        count.text = (maxQuantity - 1).ToString();
         Price();
 
     }
@@ -58,7 +46,7 @@ public class Calculate : MonoBehaviour
         if (int.Parse(count.text.ToString()) == maxQuantity)
             return;
         saleCount.text = (int.Parse(saleCount.text.ToString())+1)+"";
-        count.text = (int.Parse(count.text.ToString()) - 1).ToString();
+        count.text = "x" + (int.Parse(count.text.ToString()) - 1).ToString();
         Price();
     }
     public void MinusButton()
@@ -67,7 +55,7 @@ public class Calculate : MonoBehaviour
             return;
 
         saleCount.text = (int.Parse(saleCount.text.ToString()) - 1) + "";
-        count.text = (int.Parse(count.text.ToString()) + 1).ToString();
+        count.text = "x" + (int.Parse(count.text.ToString()) + 1).ToString();
         Price();
     }
     public void MaxButton()
@@ -89,6 +77,8 @@ public class Calculate : MonoBehaviour
     public void Sale()
     {
         myPrice.text = (int.Parse(myPrice.text.ToString()) + int.Parse(productPrice.text.ToString())).ToString();
+        MoneyManager.Instance.PlustMoney(int.Parse(saleCount.text.ToString()) * 110);
+        myPrice.text = MoneyManager.Instance.GetMoney().ToString();
         productList.SetActive(false);
         salePrice.SetActive(false);
     }

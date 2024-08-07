@@ -43,6 +43,7 @@ public class Pick : MonoBehaviour
         {
             // 일단 휘두름
             attackAnim.SetTrigger("isAttack");
+            GetComponent<AudioSource>().Play();
         }
     }
     

@@ -46,6 +46,8 @@ public class UIManager : Manager<UIManager>
     [Header("Store")]
     [SerializeField] private GameObject storeUI;
 
+    public bool isPanelOpend = false;
+
 
     //NPC 식별 상수
     private const int BLACK_SMITH = 0;
@@ -57,10 +59,12 @@ public class UIManager : Manager<UIManager>
         {
             if (InventoryManager.Instance.IsInventory)
             {
+                isPanelOpend = true;
                 InventoryManager.Instance.OpenInventory();
             }
             else
             {
+                isPanelOpend = false;
                 InventoryManager.Instance.CloseInventory();
             }
         }
@@ -89,8 +93,9 @@ public class UIManager : Manager<UIManager>
     {
         // 광산 선택 패널 오픈
         minePortalPanel.gameObject.SetActive(true);
-        
+
         // 플레이어 조작 멈춤
+        isPanelOpend = true;
         
     }
 
@@ -214,7 +219,11 @@ public class UIManager : Manager<UIManager>
             enfroceUI.Init();
         }
         else
+        {
             calculateUI.SetActive(true);
+            calculateUI.GetComponent<Calculate>().StartSetting();
+        }
+            
 
         btnID = 0;
         dialigIndex = 0;
@@ -264,7 +273,7 @@ public class UIManager : Manager<UIManager>
 
     public void CloseEnforce()
     {
-        enfroceUI.gameObject.SetActive(false);
+        //enfroceUI.gameObject.SetActive(false);
         calculateUI.SetActive(false);
         storeUI.SetActive(false);
 

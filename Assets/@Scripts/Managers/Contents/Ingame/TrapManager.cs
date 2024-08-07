@@ -2,21 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrapManager : MonoBehaviour
+public class TrapManager : Manager<TrapManager>
 {
     [SerializeField] private GameObject prfWaterBomb;
     [SerializeField] private GameObject prfGas;
 
-    private Vector3 mapSize = new Vector3(-9, 5, 0);
+    public Vector3 mapSize = new Vector3(-9, 5, 0);
 
     //플레이어 맵 이동시 맵 X,Y 위치값 변경
-    public void SwitchMapMinTransform(int x, int y)
+    public void SwitchMapMinTransform(float x, float y)
     {
+        StopAllCoroutines();
         mapSize = new Vector3(x, y, 0);
+        StartCoroutine(StartGas());
+        StartCoroutine(StartWaterBomb());
     }
 
-    private void Start()
+    //private void Start()
+    //{
+    //    StartCoroutine(StartGas());
+    //    StartCoroutine(StartWaterBomb());
+    //}
+
+    public void RestartTrap()
     {
+
+        StopAllCoroutines();
         StartCoroutine(StartGas());
         StartCoroutine(StartWaterBomb());
     }
@@ -24,7 +35,7 @@ public class TrapManager : MonoBehaviour
     IEnumerator StartGas()
     {
         //나중에 true를 광산 진입 여부로 체크
-        while (true)
+        while (PortalManager.Instance.isInMine)
         {
             //재생 시간 포함 총 10초 대기 후 생성
             yield return new WaitForSeconds(10.0f);
@@ -41,13 +52,17 @@ public class TrapManager : MonoBehaviour
             //삭제
             yield return new WaitForSeconds(5.0f);
         }
+
+        yield return null;
     }
 
     //-6~6, 4(고정)/-5 + -9(고정)/9,2~-2
     IEnumerator StartWaterBomb()
     {
-        while (true)
+        while (PortalManager.Instance.isInMine)
         {
+            Debug.Log(PortalManager.Instance.isInMine);
+
             //5초 대기
             yield return new WaitForSeconds(5.0f);
 
@@ -78,9 +93,8 @@ public class TrapManager : MonoBehaviour
 
             //2초 대기
             yield return new WaitForSeconds(2.0f);
-
-            //파괴
-            Destroy(waterBomb);
         }
+
+        yield return null;
     }
 }

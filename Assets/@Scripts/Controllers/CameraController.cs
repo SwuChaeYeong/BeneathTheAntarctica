@@ -19,7 +19,7 @@ public class CameraController : Manager<CameraController>
 
     // 초기 카메라 위치
     private Vector3 originalPosition;
-    [SerializeField] Vector2 center;
+    [SerializeField] public Vector2 center;
     [SerializeField] float height;
     [SerializeField] float width;
 
@@ -70,14 +70,14 @@ public class CameraController : Manager<CameraController>
         isShaking = false;
     }
 
-    public void SetCameraLimit(float mapSizeX, float mapSizeY)
+    public void SetCameraLimit(float centerX, float centerY)
     {
         // 플레이어 캐릭터가 맵을 이동하면, 카메라의 제한 범위를 변경해준다.
         // 카메라 제한범위 변경 코드 삽입
-        //mapSize.x = mapSizeX;
-        //mapSize.y = mapSizeY;
-        center.x = 0f;
-        center.y = 0f;
+        mapSize.x = 10.0f;
+        mapSize.y = 6.0f;
+        center.x = centerX;
+        center.y = centerY;
 
         transform.position = player.transform.position + distance;
     }

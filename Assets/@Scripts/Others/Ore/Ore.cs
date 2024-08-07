@@ -18,7 +18,7 @@ public class Ore : MonoBehaviour
     public float hp = 50f;
     public float maxHp = 50f;
     public float displayTime = 5f; // HP 슬라이더를 보여줄 시간
-    public float respawnTime = 5f;
+    public float respawnTime = 0.1f;
     
     private bool isPlayerAttacking = false;
     
@@ -46,6 +46,15 @@ public class Ore : MonoBehaviour
     
     private void Awake() {
         mat = GetComponent<SpriteRenderer>().material;
+    }
+
+    public void Update()
+    {
+        if (DoorManager.Instance.isMove)
+        {
+            StartCoroutine(RespawnAfterDelay(respawnTime));
+        }
+            
     }
 
     private void Flash(){
@@ -85,12 +94,14 @@ public class Ore : MonoBehaviour
     {
         attackedVFX.Play();
         hp -= damage;
+        GetComponent<AudioSource>().Play();
         if (hp <= 0)
         {
             hp = 0;
             LevelManager.Instance.AddExp(5);
             InventoryManager.Instance.AddPart(name, Random.Range(1, 3), img);
             FadeOutAndDisable();
+            FloorManager.Instance.OrePlus();
             //StartCoroutine(RespawnAfterDelay(respawnTime));
             return;
         }
@@ -123,14 +134,27 @@ public class Ore : MonoBehaviour
     // 딜레이 후, 리스폰
     IEnumerator RespawnAfterDelay(float delay)
     {
-        yield return new WaitForSeconds(delay);
-
         gameObject.SetActive(true);
         spriteRenderer.color = Color.white; // 알파값 리셋
         boxCollider.enabled = true;
         hp = maxHp;
         hpSlider.value = maxHp;
+
+        yield return new WaitForSeconds(delay);
+        DoorManager.Instance.isMove = false;
+
     }
+
+    //public void RespawnOre()
+    //{
+    //    gameObject.SetActive(true);
+    //    spriteRenderer.color = Color.white; // 알파값 리셋
+    //    boxCollider.enabled = true;
+    //    hp = maxHp;
+    //    hpSlider.value = maxHp;
+    //}
+
+
 
     // 광물, HP슬라이더 숨김처리
     void FadeOutAndDisable()

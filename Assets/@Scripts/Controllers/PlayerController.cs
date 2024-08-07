@@ -12,6 +12,11 @@ public class PlayerController : Manager<PlayerController>
     [SerializeField] private Slider playerHP;
     [SerializeField] private TMP_Text playerHPText;
 
+    private float invincibleLength = 1.0f;
+    private float invincibleTime = 0.0f;
+
+    public bool isHit = false;
+    public bool isInvincible = false;
 
     public int MaxHp;
     public int Hp;
@@ -40,11 +45,13 @@ public class PlayerController : Manager<PlayerController>
         //PlayerController에서 Init이 모두 끝나면 하위개념인
         //WeaponManager Init 실행
         //WeaponManager.Instance.Init();
+
+        invincibleTime = invincibleLength;
     }
 
     public void Teleport(Transform targetPosition)
     {
-        transform.position = targetPosition.position + new Vector3(0, -1.5f, 0);
+        transform.position = targetPosition.position;
     }
 
     private void Update()
@@ -54,6 +61,26 @@ public class PlayerController : Manager<PlayerController>
         
         // 마우스 위치 추적 및 캐릭터 방향 설정
         UpdateCursorPosition();
+
+        //피격 시 1초 무적
+        if (isHit)
+        {
+            Debug.Log("피격");
+            //무적 시간이 다 줄어들지 않았으면 deltaTime만큼 감소
+            if(invincibleTime > 0)
+            {
+                isInvincible = true;
+                invincibleTime -= Time.deltaTime;
+            }
+            //무적 시간이 다 줄었을 경우 초기화
+            else
+            {
+                isHit = false;
+                isInvincible = false;
+                invincibleTime = invincibleLength;
+            }
+
+        }
     }
 
     private void FixedUpdate()
@@ -65,29 +92,31 @@ public class PlayerController : Manager<PlayerController>
     {
         Vector2 moveDir = Vector2.zero;
         isMoving = false;
-        
-        if (Input.GetKey(KeyCode.W))
-        {
-            moveDir.y += 1;
-            isMoving = true;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            moveDir.y -= 1;
-            isMoving = true;
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            moveDir.x -= 1;
-            isMoving = true;
-        }
 
-        if (Input.GetKey(KeyCode.D))
+        if (!UIManager.Instance.isPanelOpend)
         {
-            moveDir.x += 1;
-            isMoving = true;
+            if (Input.GetKey(KeyCode.W))
+            {
+                moveDir.y += 1;
+                isMoving = true;
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                moveDir.y -= 1;
+                isMoving = true;
+            }
+            if (Input.GetKey(KeyCode.A))
+            {
+                moveDir.x -= 1;
+                isMoving = true;
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                moveDir.x += 1;
+                isMoving = true;
+            }
         }
-
+       
         if (!isMoving)
             playerAnim.SetBool("isMove", false);
         else
@@ -130,17 +159,19 @@ public class PlayerController : Manager<PlayerController>
         transform.position += dir;
     }
 
-    //public void Damaged(int now, int max)
-    //{
-    //    playerHP.maxValue = max;
-    //    playerHP.value = now;
-    //}
     public void Damaged(int damage)
     {
         Hp-=damage;
 
         playerHP.value = Hp / (float)MaxHp;
 
+        playerHPText.text = $"{Hp}/{MaxHp}";
+    }
+
+    public void SetHp(int hp)
+    {
+        MaxHp = hp;
+        playerHP.value = Hp / (float)MaxHp;
         playerHPText.text = $"{Hp}/{MaxHp}";
     }
 }

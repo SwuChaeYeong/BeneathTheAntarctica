@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Portal : MonoBehaviour
 {
-    public string myName;
+    [SerializeField] private string myName;
 
     private void OnTriggerEnter2D(Collider2D other)
     {

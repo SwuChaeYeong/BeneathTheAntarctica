@@ -10,7 +10,7 @@ public class SpawnManager : Manager<SpawnManager>
     
     private int currentWave = 1;
 
-    private int[] enemyNum = {1, 7, 1, 10, 1}; // 5레벨은 보스
+    private int[] enemyNum = {3, 7, 1, 10, 1}; // 5레벨은 보스
     private int[] enemyHp = { 50, 75, 100, 125, 500 };
     private int[] enemyAtk = { 10, 15, 20, 25, 100 };
     private float[] enemySpd = { 1, 1, 1, 1, 3 };
